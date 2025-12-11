@@ -1,8 +1,10 @@
+#!/bin/python
+
 from astropy.io import fits
 import numpy as np
 from sys import argv
 
-# path_to_xillver_file = "/Users/askarabd/Documents/fudan/FITS/xillver-a-Ec5.fits"
+path_to_xillver_file = "/home/roman/xillver-a-Ec5.fits"
 
 gamma = 2
 afe = 1.5
@@ -18,6 +20,7 @@ logxi = float(argv[3])
 ecut = float(argv[4])
 incl = float(argv[5])
 path_to_xillver_file = argv[6]
+tempdir = argv[7]
 
 hdu = fits.open(path_to_xillver_file)
 
@@ -108,7 +111,7 @@ for i in range(10):
     # print(xill_spec[i].shape)
 
 
-filename = "data/xill_spec_gam_%.2f_afe_%.2f_xi_%.2f_ecut_%.2f_incl_%.2f.dat" % (gamma, afe, logxi, ecut, incl)
+filename = tempdir+"data/xill_spec_gam_%.2f_afe_%.2f_xi_%.2f_ecut_%.2f_incl_%.2f.dat" % (gamma, afe, logxi, ecut, incl)
 file = open(filename, "w")
 
 for i in range(10):
